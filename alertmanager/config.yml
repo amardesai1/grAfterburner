@@ -1,0 +1,31 @@
+# Whether or not to notify about resolved alerts.
+[ send_resolved: <boolean> | default = true ]
+
+# The recipient user’s user key.
+user_key: uvgnfsqhrwgtxuo5wn4fw4dd2epyp6
+
+# Your registered application’s API token, see https://pushover.net/apps
+token: afwtqvbtev8a8svyg84i1zgz9wbba9
+
+# Notification title.
+[ title: <tmpl_string> | default = '{{ template "pushover.default.title" . }}' ]
+
+# Notification message.
+[ message: <tmpl_string> | default = '{{ template "pushover.default.message" . }}' ]
+
+# A supplementary URL shown alongside the message.
+[ url: <tmpl_string> | default = '{{ template "pushover.default.url" . }}' ]
+
+# Priority, see https://pushover.net/api#priority
+[ priority: <tmpl_string> | default = '{{ if eq .Status "firing" }}2{{ else }}0{{ end }}' ]
+
+# How often the Pushover servers will send the same notification to the user.
+# Must be at least 30 seconds.
+[ retry: <duration> | default = 1m ]
+
+# How long your notification will continue to be retried for, unless the user
+# acknowledges the notification.
+[ expire: <duration> | default = 1h ]
+
+# The HTTP client's configuration.
+[ http_config: <http_config> | default = global.http_config ]

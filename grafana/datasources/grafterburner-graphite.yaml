@@ -4,7 +4,16 @@ datasources:
 - name: grAfterburner-Graphite
   type: graphite
   access: proxy
-  url: http://grafterburner-graphite:80
+  url: http://graphite:80
   editable: true
   jsonData:
-      graphiteVersion: "1.1"
+  graphiteVersion: "1.1"
+
+- name: Prometheus
+  type: prometheus
+  access: proxy
+  orgId: 1
+  url: http://prometheus:9090
+  basicAuth: false
+  isDefault: true
+  editable: true
